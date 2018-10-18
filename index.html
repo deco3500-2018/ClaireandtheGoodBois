@@ -11,11 +11,21 @@
       <h1>Name of Project</h1>
       <p id="line">A small scale simulation of the difficulties someone with dyslexia may experience while reading.</p>
       <form>
-        <input type="text" name="username" autocomplete="off" placeholder="Username">
+        <input type="text" name="username" id ="text" autocomplete="off" onkeypress="return runScript(event)" placeholder="Username">
       </form>
       <div class="button">
         <a href="summary.html"><button type="button" name="button">Enter</button></a>
       </div>
     </div>
+
   </body>
+
+  <script type="text/javascript">
+    function runScript(e) {
+    //See notes about 'which' and 'key'
+    if (e.keyCode == 13) {
+        window.location.href = "summary.html";
+    }
+}
+  </script>
 </html>
