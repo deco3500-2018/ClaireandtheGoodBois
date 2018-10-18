@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   </head>
 
   <body>
@@ -11,21 +12,22 @@
       <h1>Name of Project</h1>
       <p id="line">A small scale simulation of the difficulties someone with dyslexia may experience while reading.</p>
       <form>
-        <input type="text" name="username" id ="text" autocomplete="off" onkeypress="return runScript(event)" placeholder="Username">
+        <input type="text" name="username" id ="text" autocomplete="off"  placeholder="Username">
       </form>
       <div class="button">
         <a href="summary.html"><button type="button" name="button">Enter</button></a>
       </div>
     </div>
 
+
+<script type="text/javascript">
+$('input[type=text]').on('keydown', function(e) {
+    if (e.which == 13) {
+        e.preventDefault();
+        $(location).attr('href', "summary.html");
+    }
+});
+</script>
   </body>
 
-  <script type="text/javascript">
-    function runScript(e) {
-    //See notes about 'which' and 'key'
-    if (e.keyCode == 13) {
-        window.location.href = "summary.html";
-    }
-}
-  </script>
 </html>
