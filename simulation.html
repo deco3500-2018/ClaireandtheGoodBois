@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>dysgrep</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<!-- <link rel="shortcut icon" href="images/icon.png" /> -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+	<div id="container">
+	<header>
+        <a href="summary.html"><p>Home</p></a>
+    </header>
+
+	<!--<h1>Dysglrepghia</h1>
+	<p> this is something</p>-->
+
+	<div id="content" style="text-align:center">
+
+	<br>
+	<br>
+	<p style="font-size:larger">The last person wrote:</p>
+	<p id="dys" style="font-size: 200%">Loading . . .</p>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<form>
+		<p style="font-size:smaller">What do you think they actually meant?</p>
+		<input type="text" id="text" autocomplete="off" name="question">
+		<input type="submit" id="submit" value="submit">
+	</form>
+
+	</div>
+	</div>
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-database.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB4V0cEMBuSwR05-UvcR437IJNRVMb4TaE",
+    authDomain: "tbaa-103f3.firebaseapp.com",
+    databaseURL: "https://tbaa-103f3.firebaseio.com",
+    projectId: "tbaa-103f3",
+    storageBucket: "tbaa-103f3.appspot.com",
+    messagingSenderId: "503354521935"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script>
+$(document).ready(function(){
+
+	// could probably make the "Loading . . ." text fade to begin with which
+	// would be cool.
+
+	// method to get the most recent ref ID. replace .ref('1') with .ref(refID) from this method
+
+	var idList = firebase.database().ref('wordId');
+	var wordId;
+	var newWordId;
+	var pageLoad = false;
+
+	document.getElementById("submit").onclick = function() {
+		var stringToSubmit = document.getElementById("text").value;
+		// we're getting the string that's being entered. should probably
+		// check that the string length is somewhat similar to the entered length (with a 3 char margin or whatever)
+		firebase.database().ref('wordId/' + newWordId).set({
+			word: stringToSubmit
+		});
+
+		$(location).attr('href', "results.html");
+		return false;
+	};
+
+	var stringToModify;
+	var modifiedString = '';
+
+	idList.once('value').then(function(snapshot) {
+		for (var i = 0; i < snapshot.val().length; i ++) {
+			wordId = i; // gets the id of the most recent addition
+			newWordId = i+1; // gets the new id
+		}
+		//for (var i = 0; i <= snapshot.val())
+		var wordRef = firebase.database().ref('wordId/' + wordId );
+		wordRef.once('value').then(function(snapshot) {
+			stringToModify = snapshot.val().word; 
+
+			String.prototype.replaceAt=function(index, replacement) {
+				return this.substr(0, index) + replacement + this.substr(index + replacement.length);
+			}
+
+			var length = stringToModify.length;
+
+			for (var i = 0; i < length; i++) {
+				var character = stringToModify.charAt(i);
+				if (i % 2 == 0) {
+					if (character == "a") {
+						var random = Math.floor((Math.random()*2)+1);
+						if (random == 1) {
+							modifiedString = modifiedString +  "o";
+						} else if (random == 2) {
+							modifiedString = modifiedString +  "e";
+						}
+					} else if (character == "e") {
+						modifiedString = modifiedString +  "o";
+					} else if (character == "h") {
+						modifiedString = modifiedString + "b";
+					} else if (character == "b") {
+						var random = Math.floor((Math.random()*2)+1);
+						if (random == 1) {
+							modifiedString = modifiedString +  "p";
+						} else if (random == 2) {
+							modifiedString = modifiedString +  "h";
+						}
+					} else if (character == "o") {
+						modifiedString = modifiedString +  "a";
+					} else if (character == "w") {
+						modifiedString = modifiedString +  "m";
+					} else if (character == "m") {
+						modifiedString = modifiedString +  "w";
+					} else if (character == "q") {
+						modifiedString = modifiedString +  "g";
+					} else if (character == "g") {
+						modifiedString = modifiedString +  "q";
+					} else if (character == "t") {
+						modifiedString = modifiedString +  "i";
+					} else if (character == "n") {
+						modifiedString = modifiedString +  "u";
+					} else if (character == "l") {
+						modifiedString = modifiedString +  "i";
+					} else if (character == "i") {
+						modifiedString = modifiedString +  "t";
+					} else {
+						modifiedString = modifiedString + character;
+					}
+				} else {
+					modifiedString = modifiedString + character;
+				}
+			}
+
+			// method to actually modify the string. store it and then change 'im pickle rick' to the modified string.
+
+
+
+			if (!pageLoad) {
+				document.getElementById("dys").innerHTML = modifiedString;
+				pageLoad = true;
+			}
+		});
+	});
+
+
+});
+</script>
+
+
+</body>
+</html>

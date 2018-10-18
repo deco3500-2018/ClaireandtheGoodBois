@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>results</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<!-- <link rel="shortcut icon" href="images/icon.png" /> -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+	<div id="container">
+	<header>
+        <a href="summary.html"><p>Home</p></a>
+    </header>
+
+	<!--<h1>Dysglrepghia</h1>
+	<p> this is something</p>-->
+
+	<div id="content" style="text-align:center">
+
+	<br>
+	<br>
+	<p style="font-size:larger">You wrote:</p>
+	<p id="entered" style="font-size: 200%">Loading . . .</p>
+	<br>
+	<p style="font-size:larger">The text was <i>originally</i>:</p>
+	<p id="actual" style="font-size: 200%">Loading . . .</p>
+	<br>
+	<br>
+	<br>
+	<p style="font-size:larger">Here are some of the responses that got you to this point:</p>
+	<p id="previous" style="font-size: 200%">Loading . . .</p>
+	<p id="previous2" style="font-size: 200%">Loading . . .</p>
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<p>Please press this button when you're finished! Thanks for your time.</p>
+	<input type="submit" id="submit" value="Done">
+
+	</div>
+	</div>
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.4/firebase-database.js"></script>
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyB4V0cEMBuSwR05-UvcR437IJNRVMb4TaE",
+    authDomain: "tbaa-103f3.firebaseapp.com",
+    databaseURL: "https://tbaa-103f3.firebaseio.com",
+    projectId: "tbaa-103f3",
+    storageBucket: "tbaa-103f3.appspot.com",
+    messagingSenderId: "503354521935"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script>
+
+document.getElementById("submit").onclick = function() {
+		// we're getting the string that's being entered. should probably
+		// check that the string length is somewhat similar to the entered length (with a 3 char margin or whatever)
+		firebase.database().ref('wordId/0').set({
+			word: "Will you pass the butter, please?"
+		});
+		firebase.database().ref('wordId/1').set({
+			word: "Will you pass the bunner, please?"
+		});
+		firebase.database().ref('wordId/2').set({
+			word: "Witt yon bass Ihe pnller, btees?"
+		});
+		firebase.database().ref('wordId/3').remove();
+		return false;
+	};
+
+$(document).ready(function(){
+
+	// could probably make the "Loading . . ." text fade to begin with which
+	// would be cool.
+
+	// method to get the most recent ref ID. replace .ref('1') with .ref(refID) from this method
+
+	var idList = firebase.database().ref('wordId');
+	var wordId;
+	var lastWordId;
+	var lastLastWordId;
+	var pageLoad = false;
+
+	var stringToModify;
+	var modifiedString = '';
+	var lastString = '';
+	var lastLastString = '';
+
+	idList.once('value').then(function(snapshot) {
+		for (var i = 0; i < snapshot.val().length; i ++) {
+			wordId = i; // gets the id of the most recent addition
+			lastWordId = i-1; // gets the new id
+			lastLastWordId = i-2;
+		}
+
+		var wordRef = firebase.database().ref('wordId');
+		wordRef.once('value').then(function(snapshot) {
+			modifiedString = snapshot.val()[wordId].word;
+			lastString = snapshot.val()[lastWordId].word;
+			lastStringTwo = snapshot.val()[lastWordId-1].word;
+			lastLastString = snapshot.val()[0].word;
+
+			// method to actually modify the string. store it and then change 'im pickle rick' to the modified string.
+
+
+
+			if (!pageLoad) {
+				document.getElementById("entered").innerHTML = modifiedString;
+				document.getElementById("actual").innerHTML = lastLastString;
+				document.getElementById("previous").innerHTML = lastString;
+				document.getElementById("previous2").innerHTML = lastStringTwo;
+				pageLoad = true;
+			}
+		});
+	});
+
+
+});
+</script>
+
+
+</body>
+</html>
