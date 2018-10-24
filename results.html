@@ -71,7 +71,7 @@
 
 <script>
 
-document.getElementById("submit").onclick = function() {
+/**document.getElementById("submit").onclick = function() {
 		// we're getting the string that's being entered. should probably
 		// check that the string length is somewhat similar to the entered length (with a 3 char margin or whatever)
 		firebase.database().ref('wordId/0').set({
@@ -85,12 +85,9 @@ document.getElementById("submit").onclick = function() {
 		});
 		firebase.database().ref('wordId/3').remove();
 		return false;
-	};
+	};*/ // this was for prototyping consistency reasons only
 
 $(document).ready(function(){
-
-	// could probably make the "Loading . . ." text fade to begin with which
-	// would be cool.
 
 	// method to get the most recent ref ID. replace .ref('1') with .ref(refID) from this method
 
@@ -103,6 +100,7 @@ $(document).ready(function(){
 	var stringToModify;
 	var modifiedString = '';
 	var lastString = '';
+	var lastStringTwo = '';
 	var lastLastString = '';
 
 	idList.once('value').then(function(snapshot) {
@@ -116,7 +114,7 @@ $(document).ready(function(){
 		wordRef.once('value').then(function(snapshot) {
 			modifiedString = snapshot.val()[wordId].word;
 			lastString = snapshot.val()[lastWordId].word;
-			lastStringTwo = snapshot.val()[lastWordId-1].word;
+			lastStringTwo = snapshot.val()[lastLastWordId].word;
 			lastLastString = snapshot.val()[0].word;
 
 			// method to actually modify the string. store it and then change 'im pickle rick' to the modified string.
