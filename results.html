@@ -45,7 +45,7 @@
 	<br>
 	<br>
 	<p>Please press this button when you're finished! Thanks for your time.</p>
-	<input type="submit" id="submit" value="Done">
+	<input type="submit" id="submit" value="Continue">
 
 	</div>
 	</div>
@@ -71,21 +71,10 @@
 
 <script>
 
-/**document.getElementById("submit").onclick = function() {
-		// we're getting the string that's being entered. should probably
-		// check that the string length is somewhat similar to the entered length (with a 3 char margin or whatever)
-		firebase.database().ref('wordId/0').set({
-			word: "Will you pass the butter, please?"
-		});
-		firebase.database().ref('wordId/1').set({
-			word: "Will you pass the bunner, please?"
-		});
-		firebase.database().ref('wordId/2').set({
-			word: "Witt yon bass Ihe pnller, btees?"
-		});
-		firebase.database().ref('wordId/3').remove();
+document.getElementById("submit").onclick = function() {
+		$(location).attr('href', "simulation.html");
 		return false;
-	};*/ // this was for prototyping consistency reasons only
+	};
 
 $(document).ready(function(){
 
