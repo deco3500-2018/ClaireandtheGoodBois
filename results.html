@@ -15,8 +15,8 @@
 
 	<div id="container">
 	<header>
-        <a href="summary.html"><p>Home</p></a>
-    </header>
+        	<a href="summary.html"><p>Home</p></a>
+    	</header>
 
 	<!--<h1>Dysglrepghia</h1>
 	<p> this is something</p>-->
@@ -71,12 +71,13 @@
 
 <script>
 
-document.getElementById("submit").onclick = function() {
+
+$(document).ready(function(){
+	
+	document.getElementById("submit").onclick = function() {
 		$(location).attr('href', "simulation.html");
 		return false;
 	};
-
-$(document).ready(function(){
 
 	// method to get the most recent ref ID. replace .ref('1') with .ref(refID) from this method
 
