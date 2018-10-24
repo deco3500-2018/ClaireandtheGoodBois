@@ -17,8 +17,8 @@ h1 {
 }
 
 h2 {
-  margin-left: 15px;
-  font-size: 40px;
+  margin: 0 auto;
+  font-size: 45px;
 }
 
 .background {
@@ -71,8 +71,38 @@ a {
 }
 
 p {
-  margin-left: 15px;
   padding-top: 10px;
+  font-size: 18px;
+  padding-bottom: 10px;
+}
+
+.content {
+  width: 60%;
+  margin: 0 auto;
+}
+
+li {
+  list-style: disc;
+}
+
+ul {
+  padding-bottom: 15px;
+  margin-left: 20px;
+}
+
+#start {
+  background-color: #B8E5FF;
+  float: right;
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+#start:hover {
+  background-color: #EBEBEB;
+}
+
+#line {
+  text-align: center;
 }
 
 .images {
