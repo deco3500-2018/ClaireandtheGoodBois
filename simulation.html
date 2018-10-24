@@ -74,29 +74,6 @@ $(document).ready(function(){
 	var newWordId;
 	var pageLoad = false;
 
-	document.getElementById("submit").onclick = function() {
-		var stringToSubmit = document.getElementById("text").value;
-		// we're getting the string that's being entered. should probably
-		// check that the string length is somewhat similar to the entered length (with a 3 char margin or whatever)
-		firebase.database().ref('wordId/' + newWordId).set({
-			word: stringToSubmit
-		});
-
-		$(location).attr('href', "results.html");
-		return false;
-	};
-	
-	document.getElementById("submit").onclick = function() {
-		var stringToSubmit = document.getElementById("text").value;
-		// we're getting the string that's being entered. should probably
-		// check that the string length is somewhat similar to the entered length (with a 3 char margin or whatever)
-		firebase.database().ref('wordId/' + newWordId).set({
-			word: stringToSubmit
-		});
-
-		$(location).attr('href', "results.html");
-		return false;
-	};
 
 	var stringToModify;
 	var modifiedString = '';
@@ -107,6 +84,31 @@ $(document).ready(function(){
 			newWordId = i+1; // gets the new id
 		}
 		//for (var i = 0; i <= snapshot.val())
+		
+		document.getElementById("submit").onclick = function() {
+			var stringToSubmit = document.getElementById("text").value;
+			// we're getting the string that's being entered. should probably
+			// check that the string length is somewhat similar to the entered length (with a 3 char margin or whatever)
+			firebase.database().ref('wordId/' + newWordId).set({
+				word: stringToSubmit
+			});
+
+			$(location).attr('href', "results.html");
+			return false;
+		};
+	
+		document.getElementById("submit").onclick = function() {
+			var stringToSubmit = document.getElementById("text").value;
+			// we're getting the string that's being entered. should probably
+			// check that the string length is somewhat similar to the entered length (with a 3 char margin or whatever)
+			firebase.database().ref('wordId/' + newWordId).set({
+				word: stringToSubmit
+			});
+
+			$(location).attr('href', "results.html");
+			return false;
+		};
+		
 		var wordRef = firebase.database().ref('wordId/' + wordId );
 		wordRef.once('value').then(function(snapshot) {
 			stringToModify = snapshot.val().word; 
