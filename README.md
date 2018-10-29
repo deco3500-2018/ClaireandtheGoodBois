@@ -23,6 +23,7 @@
 * [Sample phrases](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/Dyslexia-sample-phases-and-user-testing)
 * [Testing of Low Fidelity prototype](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/User-testing-with-Low-Fidelity-Prototype)
 * [Testing of Medium Fidelity prototype](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/User-testing-with-Medium-Fidelity-Prototype)
+* [Testing of proof-of-concept prototype](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/User-testing-of-proof-of-concept-prototype)
 
 ### Development
 * [Low Fidelity Prototype](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/Low-Fidelity-Prototype)
