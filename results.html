@@ -78,14 +78,14 @@ $(document).ready(function(){
 	var topRef = firebase.database().ref('butter/priority');
 	topRef.once('value').then(function(snapshot) {
 		console.log(topLvlString);
-		if (snapshot.val().value == 0) {
+		if (snapshot.val().value == '0') {
 			topLvlString = 'butter';
 		}
 		
 		topRef = firebase.database().ref('myson/priority');
 		topRef.once('value').then(function(snapshot) {
 			console.log(topLvlString);
-			if (snapshot.val().value == 0) {
+			if (snapshot.val().value == '0') {
 				topLvlString = 'myson';
 			}
 			
@@ -93,7 +93,7 @@ $(document).ready(function(){
 			var topRef = firebase.database().ref('bear/priority');
 			topRef.once('value').then(function(snapshot) {
 				console.log(topLvlString);
-				if (snapshot.val().value == 0) {
+				if (snapshot.val().value == '0') {
 					topLvlString = 'bear';
 			}
 	});	
@@ -103,13 +103,13 @@ $(document).ready(function(){
 	
 	document.getElementById("submit").onclick = function() {
 		firebase.database().ref('butter/priority').set({
-			value: 1
+			value: '1'
 		});
 		firebase.database().ref('myson/priority').set({
-			value: 1
+			value: '1'
 		});
 		firebase.database().ref('bear/priority').set({
-			value: 1
+			value: '1'
 		});
 		$(location).attr('href', "simulation.html");
 		return false;
