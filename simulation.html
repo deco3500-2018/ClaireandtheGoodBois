@@ -69,7 +69,6 @@ $(document).ready(function(){
 
 	// method to get the most recent ref ID. replace .ref('1') with .ref(refID) from this method
 
-	var idList = firebase.database().ref('tbaa-103f3');
 	var wordId;
 	var newWordId;
 	var pageLoad = false;
@@ -88,9 +87,10 @@ $(document).ready(function(){
 		topLvlString = "bear";
 	}
 	
+	var idList = firebase.database().ref(topLvlString);
 
 	idList.once('value').then(function(snapshot) {
-		for (var i = 0; i < snapshot.val().topLvlString.length; i ++) {
+		for (var i = 0; i < snapshot.val().length-1; i ++) {
 			wordId = i; // gets the id of the most recent addition
 			newWordId = i+1; // gets the new id
 		}
