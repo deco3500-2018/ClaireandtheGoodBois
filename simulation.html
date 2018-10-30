@@ -116,8 +116,8 @@ $(document).ready(function(){
 				word: stringToSubmit
 			});
 			
-			firebase.database().ref(topLvlString).set({
-				priority: 0
+			firebase.database().ref(topLvlString + /priority').set({
+				value: 0
 			});
 
 			$(location).attr('href', "results.html");
