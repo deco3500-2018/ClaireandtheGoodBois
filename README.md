@@ -28,6 +28,7 @@
 ### Development
 * [Low Fidelity Prototype](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/Low-Fidelity-Prototype)
 * [Medium Fidelity Prototype](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/Medium-Fidelity-Prototype)
+* [Proof-of-concept Prototype](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/Proof-of-concept-prototype)
 * [Firebase](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/Firebase-database)
 * [Connecting to UQ Zones](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/Connecting-to-UQ-Zones)
 
