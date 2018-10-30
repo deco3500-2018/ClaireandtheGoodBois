@@ -123,6 +123,8 @@ $(document).ready(function(){
 	var lastString = '';
 	var lastStringTwo = '';
 	var lastLastString = '';
+	
+	console.log(topLvlString);
 
 	idList.once('value').then(function(snapshot) {
 		for (var i = 0; i < snapshot.val().wordId.length; i ++) {
