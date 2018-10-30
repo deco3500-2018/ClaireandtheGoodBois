@@ -131,7 +131,7 @@ $(document).ready(function(){
 	
 	console.log(topLvlString);
 	
-	setTimeout(run, 3000);
+	setTimeout(run, 10000);
 	function run() {
 		idList.once('value').then(function(snapshot) {
 		for (var i = 0; i < snapshot.val().wordId.length; i ++) {
