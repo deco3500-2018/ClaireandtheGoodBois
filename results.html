@@ -44,7 +44,7 @@
 	<br>
 	<br>
 	<br>
-	<p>Please press this button when you're finished! Thanks for your time.</p>
+	<p>Please press this button when you're finished! Thank you.</p>
 	<input type="submit" id="submit" value="Continue">
 
 	</div>
@@ -100,7 +100,9 @@ $(document).ready(function(){
 	});
 	});
 	
-	firebase.database().ref('butter/priority').set({
+	
+	document.getElementById("submit").onclick = function() {
+		firebase.database().ref('butter/priority').set({
 			value: 1
 		});
 		firebase.database().ref('myson/priority').set({
@@ -109,8 +111,6 @@ $(document).ready(function(){
 		firebase.database().ref('bear/priority').set({
 			value: 1
 		});
-	
-	document.getElementById("submit").onclick = function() {
 		$(location).attr('href', "simulation.html");
 		return false;
 	};
