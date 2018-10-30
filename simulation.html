@@ -125,7 +125,7 @@ $(document).ready(function(){
 		};
 		
 		var wordRef = firebase.database().ref(topLvlString + '/wordId/' + wordId );
-		console.log(wordId);
+		console.log(topLvlString + '/wordId/' + wordId);
 		wordRef.once('value').then(function(snapshot) {
 			stringToModify = snapshot.val().word; 
 
