@@ -44,7 +44,7 @@
 	<br>
 	<br>
 	<br>
-	<p>Please press this button when you're finished! Thank you.</p>
+	<p>Please press this button when you're finished! Or else it breaks, @tutors. Thank you!</p>
 	<input type="submit" id="submit" value="Continue">
 
 	</div>
@@ -121,7 +121,7 @@ $(document).ready(function(){
 	
 	console.log(topLvlString);
 	
-	setTimeout(run, 10000);
+	setTimeout(run, 5000);
 	function run() {
 		var idList = firebase.database().ref(topLvlString);
 		var wordId;
