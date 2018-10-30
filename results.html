@@ -97,6 +97,15 @@ $(document).ready(function(){
 
 	
 	document.getElementById("submit").onclick = function() {
+		firebase.database().ref('butter/priority').set({
+			value: 1
+		});
+		firebase.database().ref('myson/priority').set({
+			value: 1
+		});
+		firebase.database().ref('bear/priority').set({
+			value: 1
+		});
 		$(location).attr('href', "simulation.html");
 		return false;
 	};
@@ -140,15 +149,7 @@ $(document).ready(function(){
 				document.getElementById("previous2").innerHTML = lastStringTwo;
 				pageLoad = true;
 				
-				firebase.database().ref('butter/priority').set({
-				value: 1
-				});
-				firebase.database().ref('myson/priority').set({
-					value: 1
-				});
-				firebase.database().ref('bear/priority').set({
-					value: 1
-				});
+
 			}
 		});
 	});
