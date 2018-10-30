@@ -95,19 +95,7 @@ $(document).ready(function(){
 			newWordId = i+1; // gets the new id
 		}
 		//for (var i = 0; i <= snapshot.val())
-		
-		document.getElementById("submit").onclick = function() {
-			var stringToSubmit = document.getElementById("text").value;
-			// we're getting the string that's being entered. should probably
-			// check that the string length is somewhat similar to the entered length (with a 3 char margin or whatever)
-			firebase.database().ref(topLvlString + '/wordId/' + newWordId).set({
-				word: stringToSubmit
-			});
 
-			$(location).attr('href', "results.html");
-			return false;
-		};
-	
 		document.getElementById("submit").onclick = function() {
 			var stringToSubmit = document.getElementById("text").value;
 			// we're getting the string that's being entered. should probably
