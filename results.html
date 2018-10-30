@@ -77,7 +77,7 @@ $(document).ready(function(){
 	var topLvlString = 'empty';
 	var topRef = firebase.database().ref('butter/priority');
 	topRef.once('value').then(function(snapshot) {
-		console.log(topLvlString);
+		console.log(snapshot.val());
 		if (snapshot.val().value == '0') {
 			topLvlString = 'butter';
 		}
