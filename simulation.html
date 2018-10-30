@@ -77,9 +77,20 @@ $(document).ready(function(){
 
 	var stringToModify;
 	var modifiedString = '';
+	
+	var topLvlString;
+	var randomNumber = Math.floor((Math.random()*3)+1); // which string to look at
+	if (randomNumber == 1) {
+		topLvlString = "butter";
+	} else if (randomNumber == 2) {
+		topLvlString = "myson";
+	} else if (randomNumber == 3) {
+		topLvlString = "bear";
+	}
+	
 
 	idList.once('value').then(function(snapshot) {
-		for (var i = 0; i < snapshot.val().length; i ++) {
+		for (var i = 0; i < snapshot.val().topLvlString.length; i ++) {
 			wordId = i; // gets the id of the most recent addition
 			newWordId = i+1; // gets the new id
 		}
@@ -89,7 +100,7 @@ $(document).ready(function(){
 			var stringToSubmit = document.getElementById("text").value;
 			// we're getting the string that's being entered. should probably
 			// check that the string length is somewhat similar to the entered length (with a 3 char margin or whatever)
-			firebase.database().ref('wordId/' + newWordId).set({
+			firebase.database().ref(topLvlString + '/wordId/' + newWordId).set({
 				word: stringToSubmit
 			});
 
@@ -101,15 +112,19 @@ $(document).ready(function(){
 			var stringToSubmit = document.getElementById("text").value;
 			// we're getting the string that's being entered. should probably
 			// check that the string length is somewhat similar to the entered length (with a 3 char margin or whatever)
-			firebase.database().ref('wordId/' + newWordId).set({
+			firebase.database().ref(topLvlString + '/wordId/' + newWordId).set({
 				word: stringToSubmit
+			});
+			
+			firebase.database().ref(topLvlString).set({
+				priority: 0
 			});
 
 			$(location).attr('href', "results.html");
 			return false;
 		};
 		
-		var wordRef = firebase.database().ref('wordId/' + wordId );
+		var wordRef = firebase.database().ref(topLvlString + '/wordId/' + wordId );
 		wordRef.once('value').then(function(snapshot) {
 			stringToModify = snapshot.val().word; 
 
