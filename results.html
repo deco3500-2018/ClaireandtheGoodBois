@@ -74,7 +74,7 @@
 
 $(document).ready(function(){
 	
-	var topLvlString = '';
+	var topLvlString = 'empty';
 	var topRef = firebase.database().ref('butter/priority');
 	topRef.once('value').then(function(snapshot) {
 		console.log(topLvlString);
@@ -131,7 +131,7 @@ $(document).ready(function(){
 	
 	console.log(topLvlString);
 	
-	while (!topLvlString == '') {
+	while (!topLvlString == 'empty') {
 		idList.once('value').then(function(snapshot) {
 		for (var i = 0; i < snapshot.val().wordId.length; i ++) {
 			wordId = i; // gets the id of the most recent addition
