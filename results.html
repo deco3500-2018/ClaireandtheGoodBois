@@ -113,7 +113,7 @@ $(document).ready(function(){
 
 	// method to get the most recent ref ID. replace .ref('1') with .ref(refID) from this method
 
-	var idList = firebase.database().ref(topLvlString + '/wordId');
+	var idList = firebase.database().ref(topLvlString);
 	var wordId;
 	var lastWordId;
 	var lastLastWordId;
@@ -126,7 +126,7 @@ $(document).ready(function(){
 	var lastLastString = '';
 
 	idList.once('value').then(function(snapshot) {
-		for (var i = 0; i < snapshot.val().length; i ++) {
+		for (var i = 0; i < snapshot.val().wordId.length; i ++) {
 			wordId = i; // gets the id of the most recent addition
 			lastWordId = i-1; // gets the new id
 			lastLastWordId = i-2;
