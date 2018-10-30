@@ -74,7 +74,7 @@
 
 $(document).ready(function(){
 	
-	var topLvlString;
+	var topLvlString = '';
 	var topRef = firebase.database().ref('butter/priority');
 	topRef.once('value').then(function(snapshot) {
 		console.log(topLvlString);
@@ -100,10 +100,7 @@ $(document).ready(function(){
 	});
 	});
 	
-
-	
-	document.getElementById("submit").onclick = function() {
-		firebase.database().ref('butter/priority').set({
+	firebase.database().ref('butter/priority').set({
 			value: 1
 		});
 		firebase.database().ref('myson/priority').set({
@@ -112,6 +109,8 @@ $(document).ready(function(){
 		firebase.database().ref('bear/priority').set({
 			value: 1
 		});
+	
+	document.getElementById("submit").onclick = function() {
 		$(location).attr('href', "simulation.html");
 		return false;
 	};
@@ -131,8 +130,9 @@ $(document).ready(function(){
 	var lastLastString = '';
 	
 	console.log(topLvlString);
-
-	idList.once('value').then(function(snapshot) {
+	
+	while (!topLvlString == '') {
+		idList.once('value').then(function(snapshot) {
 		for (var i = 0; i < snapshot.val().wordId.length; i ++) {
 			wordId = i; // gets the id of the most recent addition
 			lastWordId = i-1; // gets the new id
@@ -161,6 +161,7 @@ $(document).ready(function(){
 			}
 		});
 	});
+	}
 
 
 });
