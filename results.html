@@ -77,12 +77,14 @@ $(document).ready(function(){
 	var topLvlString;
 	var topRef = firebase.database().ref('butter/priority');
 	topRef.once('value').then(function(snapshot) {
+		console.log(topLvlString);
 		if (snapshot.val().value == 0) {
 			topLvlString = 'butter';
 		}
 		
 		topRef = firebase.database().ref('myson/priority');
 		topRef.once('value').then(function(snapshot) {
+			console.log(topLvlString);
 			if (snapshot.val().value == 0) {
 				topLvlString = 'myson';
 			}
@@ -90,6 +92,7 @@ $(document).ready(function(){
 			
 			var topRef = firebase.database().ref('bear/priority');
 			topRef.once('value').then(function(snapshot) {
+				console.log(topLvlString);
 				if (snapshot.val().value == 0) {
 					topLvlString = 'bear';
 			}
