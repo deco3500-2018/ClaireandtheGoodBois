@@ -98,17 +98,19 @@ $(document).ready(function(){
 
 		document.getElementById("submit").onclick = function() {
 			var stringToSubmit = document.getElementById("text").value;
+			
+			firebase.database().ref(topLvlString + '/priority').set({
+				value: 0
+			});
+			
 			// we're getting the string that's being entered. should probably
 			// check that the string length is somewhat similar to the entered length (with a 3 char margin or whatever)
 			firebase.database().ref(topLvlString + '/wordId/' + newWordId).set({
 				word: stringToSubmit
 			});
-			
-			idList.once('value').then(function(snapshot) {
-				console.log('um.. what?');
-				firebase.database().ref(topLvlString + '/priority').set({
-					value: 0
-			});
+
+			firebase.database().ref(topLvlString + '/priority').set({
+				value: 0
 			});
 
 			$(location).attr('href', "results.html");
