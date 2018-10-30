@@ -104,9 +104,11 @@ $(document).ready(function(){
 				word: stringToSubmit
 			});
 			
-			console.log('um.. what?');
-			firebase.database().ref(topLvlString + '/priority').set({
-				value: 0
+			idList.once('value').then(function(snapshot) {
+				console.log('um.. what?');
+				firebase.database().ref(topLvlString + '/priority').set({
+					value: 0
+			});
 			});
 
 			$(location).attr('href', "results.html");
