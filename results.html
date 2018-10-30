@@ -94,16 +94,6 @@ $(document).ready(function(){
 		}
 	});
 	
-	
-	firebase.database().ref('butter/priority').set({
-				value: 1
-			});
-		firebase.database().ref('myson/priority').set({
-				value: 1
-			});
-		firebase.database().ref('bear/priority').set({
-				value: 1
-			});
 
 	
 	document.getElementById("submit").onclick = function() {
@@ -149,6 +139,16 @@ $(document).ready(function(){
 				document.getElementById("previous").innerHTML = lastString;
 				document.getElementById("previous2").innerHTML = lastStringTwo;
 				pageLoad = true;
+				
+				firebase.database().ref('butter/priority').set({
+				value: 1
+				});
+				firebase.database().ref('myson/priority').set({
+					value: 1
+				});
+				firebase.database().ref('bear/priority').set({
+					value: 1
+				});
 			}
 		});
 	});
