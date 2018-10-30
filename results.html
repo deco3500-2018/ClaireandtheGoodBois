@@ -75,22 +75,22 @@
 $(document).ready(function(){
 	
 	var topLvlString;
-	var topRef = firebase.database().ref('butter/priority/value');
+	var topRef = firebase.database().ref('butter/priority');
 	topRef.once('value').then(function(snapshot) {
-		if (snapshot.val() == 0) {
-			topLvlString = snapshot.val();
+		if (snapshot.val().value == 0) {
+			topLvlString = 'butter';
 		}
 	});
-	var topRef = firebase.database().ref('myson/priority/value');
+	var topRef = firebase.database().ref('myson/priority');
 	topRef.once('value').then(function(snapshot) {
-		if (snapshot.val() == 0) {
-			topLvlString = snapshot.val();
+		if (snapshot.val().value == 0) {
+			topLvlString = 'myson';
 		}
 	});
-	var topRef = firebase.database().ref('bear/priority/value');
+	var topRef = firebase.database().ref('bear/priority');
 	topRef.once('value').then(function(snapshot) {
-		if (snapshot.val() == 0) {
-			topLvlString = snapshot.val();
+		if (snapshot.val().value == 0) {
+			topLvlString = 'bear';
 		}
 	});
 	
