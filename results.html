@@ -80,18 +80,21 @@ $(document).ready(function(){
 		if (snapshot.val().value == 0) {
 			topLvlString = 'butter';
 		}
+		
+		topRef = firebase.database().ref('myson/priority');
+		topRef.once('value').then(function(snapshot) {
+			if (snapshot.val().value == 0) {
+				topLvlString = 'myson';
+			}
+			
+			
+			var topRef = firebase.database().ref('bear/priority');
+			topRef.once('value').then(function(snapshot) {
+				if (snapshot.val().value == 0) {
+					topLvlString = 'bear';
+			}
+	});	
 	});
-	var topRef = firebase.database().ref('myson/priority');
-	topRef.once('value').then(function(snapshot) {
-		if (snapshot.val().value == 0) {
-			topLvlString = 'myson';
-		}
-	});
-	var topRef = firebase.database().ref('bear/priority');
-	topRef.once('value').then(function(snapshot) {
-		if (snapshot.val().value == 0) {
-			topLvlString = 'bear';
-		}
 	});
 	
 
