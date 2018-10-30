@@ -74,6 +74,27 @@
 
 $(document).ready(function(){
 	
+
+	var topLvlList = firebase.database().ref(); // ref to whole db
+	var topLvlString;
+	topLvlList.once('value').then(function(snapshot) {
+		for (var i = 0; i < snapshot.val().length; i++) {
+			if (snapshot.val()[i].priority == 0) {
+				topLvlString = snapshot.val()[i];
+			}
+		}
+		firebase.database().ref('butter').set({
+				priority: 1
+			});
+		firebase.database().ref('myson').set({
+				priority: 1
+			});
+		firebase.database().ref('bear').set({
+				priority: 1
+			});
+	});
+
+	
 	document.getElementById("submit").onclick = function() {
 		$(location).attr('href', "simulation.html");
 		return false;
