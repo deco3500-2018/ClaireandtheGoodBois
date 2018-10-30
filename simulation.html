@@ -90,7 +90,7 @@ $(document).ready(function(){
 	var idList = firebase.database().ref(topLvlString);
 
 	idList.once('value').then(function(snapshot) {
-		for (var i = 0; i < snapshot.val().length-1; i ++) {
+		for (var i = 1; i <= snapshot.val().length; i ++) {
 			wordId = i; // gets the id of the most recent addition
 			newWordId = i+1; // gets the new id
 		}
@@ -125,6 +125,7 @@ $(document).ready(function(){
 		};
 		
 		var wordRef = firebase.database().ref(topLvlString + '/wordId/' + wordId );
+		Console.log(wordId);
 		wordRef.once('value').then(function(snapshot) {
 			stringToModify = snapshot.val().word; 
 
