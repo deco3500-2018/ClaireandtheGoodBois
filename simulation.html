@@ -104,6 +104,7 @@ $(document).ready(function(){
 				word: stringToSubmit
 			});
 			
+			console.log('um.. what?');
 			firebase.database().ref(topLvlString + '/priority').set({
 				value: 0
 			});
