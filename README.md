@@ -10,6 +10,8 @@
 ### Disability Research:
 * [Auditory Processing Disorder](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/Auditory-Processing-Disorders-(APD))
 * [Dysgraphia Research](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/Dysgraphia)
+* [Dyslexia Research](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/Dyslexia)
+
 
 ### Major Changes to Project:
 * [Change in Technology](https://github.com/deco3500-2018/ClaireandtheGoodBois/wiki/Change-in-Technology-from-AR-to-Web-app)
